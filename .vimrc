@@ -155,7 +155,11 @@ nnoremap <leader>j <C-w>j
 nnoremap <leader>k <C-w>k
 nnoremap <leader>l <C-w>l
 
-" Swictch back from Insert mode to Normal mode easily
+" Switch back from Insert mode to Normal mode easily
 inoremap jj <ESC>
+inoremap hh <ESC>
+inoremap kk <ESC>
+" Not this one because there are lots of words with 'll' in them :'3
+"inoremap ll <ESC>
 
 
