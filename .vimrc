@@ -54,8 +54,7 @@ nnoremap <leader>n :NERDTreeToggle<CR>
 nnoremap <leader>f :call JsBeautify()<CR>
 nnoremap <leader>c :xa<CR>
 nnoremap <leader>rc :so ~/.vimrc<CR>
-nnoremap <F2> :tabNext<CR>
-nnoremap <F3> :tabnext<CR>
+nnoremap <leader><tab> :tabNext<CR>
 
 " Move a line up or down
 noremap <S-k> :m -2<CR>
