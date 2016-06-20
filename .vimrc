@@ -43,27 +43,46 @@ filetype plugin indent on
 " Security concerns and useless anyway
 set modelines=0
 
-" LEADER
+" LEADER SHORTCUTS
 let mapleader = " "
-nnoremap <leader>v V`]
-nnoremap <leader>, :noh<cr>
-nnoremap <leader>w <C-w>v<C-w>l
+" Quit
+nnoremap <LEADER>q :q<CR>
+" Select everything
+nnoremap <LEADER>v V`]
+" Clear search highlight
+nnoremap <LEADER>, :noh<CR>
+" Save current buffer
+nnoremap <LEADER>w :w<CR>
+" Toggle NERDTree panel
+nnoremap <LEADER>n :NERDTreeToggle<CR>
+" Call JsBeautify
+nnoremap <LEADER>f :call JsBeautify()<CR>
+" Refresh vim config from ~/.vimrc
+nnoremap <LEADER>rc :so ~/.vimrc<CR>
+" Append a semicolon and the end of current line
+nnoremap <LEADER>a A;<ESC>
+" Keep default register when pasting (send erased selection in black hole
+" register)
+vnoremap <LEADER>p "_dP
 
+" Move around windows
+nnoremap <LEADER>h <C-w>h
+nnoremap <LEADER>j <C-w>j
+nnoremap <LEADER>k <C-w>k
+nnoremap <LEADER>l <C-w>l
+
+" If no file required at CLI invoke, open with NERDTree
 autocmd VimEnter * if argc() == 0 && !exists("s:std_in") | NERDTree | endif
-nnoremap <leader>n :NERDTreeToggle<CR>
-nnoremap <leader>f :call JsBeautify()<CR>
-nnoremap <leader>c :xa<CR>
-nnoremap <leader>rc :so ~/.vimrc<CR>
 
 " Tab movement
 nnoremap <F2> :tabp<CR>
 nnoremap <F3> :tabn<CR>
 
-" Move a line up or down
+" Move lines up or down
 noremap <S-k> :m -2<CR>
 noremap <S-j> :m +1<CR>
-vnoremap <S-k> xp`[V`]
-vnoremap <S-j> xkP`[V`]
+vnoremap <S-k> xkP`[V`]
+vnoremap <S-j> xp`[V`]
 
 " Duplicate a line or block
 noremap <C-S-d> yyp
@@ -152,16 +171,14 @@ inoremap <left> <nop>
 inoremap <right> <nop>
 nnoremap j gj
 nnoremap k gk
-nnoremap <leader>h <C-w>h
-nnoremap <leader>j <C-w>j
-nnoremap <leader>k <C-w>k
-nnoremap <leader>l <C-w>l
 
 " Switch back from Insert mode to Normal mode easily
 inoremap jj <ESC>
 inoremap hh <ESC>
 inoremap kk <ESC>
-" Not this one because there are lots of words with 'll' in them :'3
-"inoremap ll <ESC>
+" Special case to avoid exiting normal mode while inputing some words
+" that contains 'll'
+inoremap lll <ESC>
+
 
 
