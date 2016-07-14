@@ -180,5 +180,6 @@ inoremap kk <ESC>
 " that contains 'll'
 inoremap lll <ESC>
 
-
+" YouCompleteMe Fix
+let g:ycm_server_python_interpreter="/usr/bin/python2"
 
