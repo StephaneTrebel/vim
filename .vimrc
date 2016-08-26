@@ -160,6 +160,11 @@ colorscheme inkpot
 set listchars=tab:>-,trail:~,extends:>,precedes:<
 set list
 
+" Disable F1 for help
+nnoremap <F1> <nop>
+inoremap <F1> <nop>
+vnoremap <F1> <nop>
+
 " Force learn ^^'
 nnoremap <up> <nop>
 nnoremap <down> <nop>
@@ -180,5 +185,12 @@ inoremap kk <ESC>
 " that contains 'll'
 inoremap lll <ESC>
 
+" Treat *.md files as markdown syntax (default is modula2)
+au BufNewFile,BufFilePre,BufRead *.md set filetype=markdown
 
-
+" Centralize all vim temp files in home folder
+set backup
+set backupdir=~/.vim/backup
+set directory=~/.vim/swap
+set undodir=~/.vim/undo
+set writebackup
