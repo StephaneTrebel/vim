@@ -1,2 +1,5 @@
 *~*
 bundle/
+undo/*
+swap/*
+backup/*
