@@ -2,4 +2,5 @@
 bundle/
 undo/%*
 swap/%*
+swap/*.swp
 backup/%*
