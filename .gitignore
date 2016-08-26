@@ -1,5 +1,5 @@
 *~*
 bundle/
-undo/*
-swap/*
-backup/*
+undo/%*
+swap/%*
+backup/%*
