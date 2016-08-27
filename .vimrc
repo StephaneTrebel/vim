@@ -194,3 +194,6 @@ set backupdir=~/.vim/backup
 set directory=~/.vim/swap
 set undodir=~/.vim/undo
 set writebackup
+
+" YouCompleteMe Fix
+let g:ycm_server_python_interpreter="/usr/bin/python2"
