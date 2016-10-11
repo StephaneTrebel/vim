@@ -37,6 +37,8 @@ Plugin 'jelera/vim-javascript-syntax'
 
 Plugin 'vim-airline/vim-airline'
 
+Plugin 'cakebaker/scss-syntax.vim'
+
 call vundle#end()
 filetype plugin indent on
 
@@ -56,7 +58,11 @@ nnoremap <LEADER>w :w<CR>
 " Toggle NERDTree panel
 nnoremap <LEADER>n :NERDTreeToggle<CR>
 " Call JsBeautify
-nnoremap <LEADER>f :call JsBeautify()<CR>
+autocmd FileType javascript nnoremap <LEADER>f :call JsBeautify()<CR>
+autocmd FileType json nnoremap <LEADER>f :call JsBeautify()<CR>
+autocmd FileType html noremap <buffer> <LEADER>f :call HtmlBeautify()<cr>
+autocmd FileType css noremap <buffer> <LEADER>f :call CSSBeautify()<cr>
+autocmd FileType scss noremap <buffer> <LEADER>f :call CSSBeautify()<cr>
 " Refresh vim config from ~/.vimrc
 nnoremap <LEADER>rc :so ~/.vimrc<CR>
 " Append a semicolon and the end of current line
@@ -196,4 +202,6 @@ set undodir=~/.vim/undo
 set writebackup
 
 " YouCompleteMe Fix
-let g:ycm_server_python_interpreter="/usr/bin/python2"
+"let g:ycm_server_python_interpreter="/c/python-3.5.2-embed-amd64/"
+
+"let g:editorconfig_Beautifier = "~/.editorconfig"
