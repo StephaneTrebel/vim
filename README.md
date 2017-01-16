@@ -17,7 +17,7 @@ cd .vim && git submodule init && git submodule update
 - Launch `vim`, pass the error message with `Enter` and type `:PluginInstall`. At launch, there will be an error about "ycm_core". Just skip it with `Enter`
 - When finished, exit and compile [YouCompleteMe](https://github.com/Valloric/YouCompleteMe):
 
-```javascript
+```bash
 # Warning: this will only install javascript support, for other options go to the YouCompleteMe repo for explanations
 
 # Install C dependencies
