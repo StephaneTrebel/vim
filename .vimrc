@@ -33,7 +33,10 @@ Plugin 'Raimondi/delimitMate'
 Plugin 'terryma/vim-expand-region'
 
 " Javascript syntax
-Plugin 'jelera/vim-javascript-syntax'
+Plugin 'pangloss/vim-javascript'
+
+" Vue.js syntax
+Plugin 'posva/vim-vue'
 
 Plugin 'vim-airline/vim-airline'
 
@@ -202,6 +205,9 @@ set undodir=~/.vim/undo
 set writebackup
 
 " YouCompleteMe Fix
-"let g:ycm_server_python_interpreter="/c/python-3.5.2-embed-amd64/"
+let g:ycm_server_python_interpreter="/usr/bin/python2"
 
 "let g:editorconfig_Beautifier = "~/.editorconfig"
+
+" Automatically refresh buffer on external changes
+set autoread
