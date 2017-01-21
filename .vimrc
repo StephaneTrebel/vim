@@ -35,9 +35,14 @@ Plugin 'terryma/vim-expand-region'
 " Javascript syntax
 Plugin 'jelera/vim-javascript-syntax'
 
+" Epic status bar for Vim
 Plugin 'vim-airline/vim-airline'
 
+" SCSS syntax
 Plugin 'cakebaker/scss-syntax.vim'
+
+" Vue.js syntax
+Plugin 'posva/vim-vue'
 
 call vundle#end()
 filetype plugin indent on
