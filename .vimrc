@@ -32,18 +32,13 @@ Plugin 'Raimondi/delimitMate'
 " Region Expansion
 Plugin 'terryma/vim-expand-region'
 
-" Javascript syntax
-Plugin 'pangloss/vim-javascript'
-
-" Vue.js syntax
-Plugin 'posva/vim-vue'
-
 " Epic status bar for Vim
 Plugin 'vim-airline/vim-airline'
 
+" Javascript syntax
+Plugin 'pangloss/vim-javascript'
 " SCSS syntax
 Plugin 'cakebaker/scss-syntax.vim'
-
 " Vue.js syntax
 Plugin 'posva/vim-vue'
 
