@@ -39,6 +39,8 @@ Plugin 'vim-airline/vim-airline'
 Plugin 'pangloss/vim-javascript'
 " SCSS syntax
 Plugin 'cakebaker/scss-syntax.vim'
+" Pug syntax
+Plugin 'digitaltoad/vim-pug'
 " Vue.js syntax
 Plugin 'posva/vim-vue'
 
