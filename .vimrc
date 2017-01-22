@@ -89,6 +89,9 @@ autocmd VimEnter * if argc() == 0 && !exists("s:std_in") | NERDTree | endif
 nnoremap <F2> :tabp<CR>
 nnoremap <F3> :tabn<CR>
 
+" Toggle for system paste
+nnoremap <F4> :set paste!<CR>
+
 " Move lines up or down
 noremap <S-k> :m -2<CR>
 noremap <S-j> :m +1<CR>
