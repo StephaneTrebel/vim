@@ -232,3 +232,6 @@ set clipboard=unnamedplus
 iabbrev adn and
 iabbrev dnas dans
 iabbrev udpate update
+
+" Abbreviations for javascript snippets I use all the time
+autocmd FileType javascript iabbrev FUNC function () {<CR>
