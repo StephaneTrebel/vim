@@ -3,7 +3,8 @@ My .vim folder with every plugin and my own annotated .vimrc file
 
 # Requirements
 
-- nodejs (for YCM javascript tern support)
+- nodejs (Optional, for YCM javascript tern support)
+- vim-gtk/vim-gnome (Optional, for system clipboard sync support)
 
 # Installation
 - Clone this repo in your Home folder
@@ -33,3 +34,12 @@ cd ~/.vim/bundle/YouCompleteMe
 ```
 
 - Enjoy !
+
+# Credits
+
+All the vim community that helped a late vimer like me to take one the most
+powerful albeit challenging text editor.
+
+Special mentions:
+
+- http://learnvimscriptthehardway.stevelosh.com/
