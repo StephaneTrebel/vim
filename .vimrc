@@ -41,6 +41,7 @@ Plugin 'cakebaker/scss-syntax.vim'
 Plugin 'digitaltoad/vim-pug'
 Plugin 'posva/vim-vue'
 Plugin 'wavded/vim-stylus'
+Plugin 'mustache/vim-mustache-handlebars'
 
 call vundle#end()
 filetype plugin indent on
