@@ -32,17 +32,15 @@ Plugin 'Raimondi/delimitMate'
 " Region Expansion
 Plugin 'terryma/vim-expand-region'
 
-" Epic status bar for Vim
+" Best status bar ever
 Plugin 'vim-airline/vim-airline'
 
-" Javascript syntax
+" Syntax (Highlighting)
 Plugin 'pangloss/vim-javascript'
-" SCSS syntax
 Plugin 'cakebaker/scss-syntax.vim'
-" Pug syntax
 Plugin 'digitaltoad/vim-pug'
-" Vue.js syntax
 Plugin 'posva/vim-vue'
+Plugin 'wavded/vim-stylus'
 
 call vundle#end()
 filetype plugin indent on
