@@ -236,3 +236,8 @@ set autoread
 " But for this to work you might need vim-gtk or vim-gnome installed
 " (see http://vim.wikia.com/wiki/Accessing_the_system_clipboard for more info)
 set clipboard=unnamedplus
+
+" Abbreviations for common typos I make, feel free to extend this !
+iabbrev adn and
+iabbrev dnas dans
+iabbrev udpate update
