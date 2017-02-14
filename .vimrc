@@ -188,30 +188,18 @@ colorscheme inkpot
 set listchars=tab:>-,trail:~,extends:>,precedes:<
 set list
 
-" Disable F1 for help
-nnoremap <F1> <nop>
-inoremap <F1> <nop>
-vnoremap <F1> <nop>
+" Switch back from Insert mode to Normal mode easily
+inoremap jk <ESC>
 
 " Force learn ^^'
-nnoremap <up> <nop>
-nnoremap <down> <nop>
-nnoremap <left> <nop>
-nnoremap <right> <nop>
-inoremap <up> <nop>
-inoremap <down> <nop>
-inoremap <left> <nop>
-inoremap <right> <nop>
+noremap <F1> <nop>
+inoremap <ESC> <nop>
+noremap <up> <nop>
+noremap <down> <nop>
+noremap <left> <nop>
+noremap <right> <nop>
 nnoremap j gj
 nnoremap k gk
-
-" Switch back from Insert mode to Normal mode easily
-inoremap jj <ESC>
-inoremap hh <ESC>
-inoremap kk <ESC>
-" Special case to avoid exiting normal mode while inputing some words
-" that contains 'll'
-inoremap lll <ESC>
 
 " Treat *.md files as markdown syntax (default is modula2)
 au BufNewFile,BufFilePre,BufRead *.md set filetype=markdown
