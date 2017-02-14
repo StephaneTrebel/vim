@@ -208,6 +208,8 @@ inoremap lll <ESC>
 
 " Treat *.md files as markdown syntax (default is modula2)
 au BufNewFile,BufFilePre,BufRead *.md set filetype=markdown
+" Treat *.tag files as jsp syntax (default is mason)
+au BufNewFile,BufFilePre,BufRead *.tag set filetype=jsp
 
 " Centralize all vim temp files in home folder
 set backup
