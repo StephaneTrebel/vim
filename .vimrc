@@ -216,3 +216,10 @@ let g:ycm_server_python_interpreter="/usr/bin/python2"
 
 " Automatically refresh buffer on external changes
 set autoread
+
+" Default the unnamed (default) register to the '+' one which is the default
+" X one. Other systems (Windows for sure) should not care if it's '+' or '*'
+" anyway.
+" But for this to work you might need vim-gtk or vim-gnome installed
+" (see http://vim.wikia.com/wiki/Accessing_the_system_clipboard for more info)
+set clipboard=unnamedplus
