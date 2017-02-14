@@ -76,8 +76,11 @@ autocmd FileType scss noremap <buffer> <LEADER>f :call CSSBeautify()<cr>
 autocmd FileType vue.html.javascript.css nnoremap <LEADER>f :/<script.*>/+1,/<\/script>/-1:call RangeJsBeautify()<CR>:noh<CR>:/<style.*>/+1,/<\/style>/-1 :call RangeCSSBeautify()<CR>:noh<CR>
 "autocmd FileType vue.html.javascript.css nnoremap <LEADER>f :qa!<CR>
 
+" Edit vimrc in a vertical split
+nnoremap <leader>ev :vsplit $MYVIMRC<CR>
 " Refresh vim config from ~/.vimrc
-nnoremap <LEADER>rc :so ~/.vim/.vimrc<CR>
+nnoremap <LEADER>sv :source $MYVIMRC<CR>
+
 " Append a semicolon and the end of current line
 nnoremap <LEADER>a A;<ESC>
 " Keep default register when pasting (send erased selection in black hole
