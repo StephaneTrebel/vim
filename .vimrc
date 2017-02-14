@@ -32,6 +32,9 @@ Plugin 'Raimondi/delimitMate'
 " Region Expansion
 Plugin 'terryma/vim-expand-region'
 
+" Surrounding plugin (to add quotes/parens/brackets around stuff)
+Plugin 'tpope/vim-surround'
+
 " Best status bar ever
 Plugin 'vim-airline/vim-airline'
 
