@@ -76,7 +76,7 @@ autocmd FileType scss noremap <buffer> <LEADER>f :call CSSBeautify()<cr>
 " * Beautify [s]css for the <style></style> region
 " I have not included HTML because I prefere Jade/Pug and since it's whitespace
 " based there's not much sense in having to beautify it I guess
-autocmd FileType vue.html.javascript.css nnoremap <LEADER>f :/<script.*>/+1,/<\/script>/-1:call RangeJsBeautify()<CR>:noh<CR>:/<style.*>/+1,/<\/style>/-1 :call RangeCSSBeautify()<CR>:noh<CR>
+autocmd FileType vue.html.javascript.css nnoremap <LEADER>f  :execute ":normal! :/<script.*>/+1,/<\/script>/-1:call RangeJsBeautify()<CR>:noh<CR>:/<style.*>/+1,/<\/style>/-1 :call RangeCSSBeautify()<CR>:noh<CR>"
 "autocmd FileType vue.html.javascript.css nnoremap <LEADER>f :qa!<CR>
 
 " Edit vimrc in a vertical split
