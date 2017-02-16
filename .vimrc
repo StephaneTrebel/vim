@@ -71,13 +71,13 @@ autocmd FileType json nnoremap <LEADER>f :call JsBeautify()<CR>
 autocmd FileType html noremap <buffer> <LEADER>f :call HtmlBeautify()<cr>
 autocmd FileType css noremap <buffer> <LEADER>f :call CSSBeautify()<cr>
 autocmd FileType scss noremap <buffer> <LEADER>f :call CSSBeautify()<cr>
+
 " Call JsBeautify for vue components:
 " * Beautify js for the <script></script> region
 " * Beautify [s]css for the <style></style> region
-" I have not included HTML because I prefere Jade/Pug and since it's whitespace
+" I have not included HTML because I prefer Jade/Pug and since it's whitespace
 " based there's not much sense in having to beautify it I guess
 autocmd FileType vue.html.javascript.css nnoremap <LEADER>f  :execute ":normal! :/<script.*>/+1,/<\/script>/-1:call RangeJsBeautify()<CR>:noh<CR>:/<style.*>/+1,/<\/style>/-1 :call RangeCSSBeautify()<CR>:noh<CR>"
-"autocmd FileType vue.html.javascript.css nnoremap <LEADER>f :qa!<CR>
 
 " Edit vimrc in a vertical split
 nnoremap <leader>ev :vsplit $MYVIMRC<CR>
