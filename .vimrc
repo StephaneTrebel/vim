@@ -80,7 +80,7 @@ autocmd FileType scss noremap <buffer> <LEADER>f :call CSSBeautify()<cr>
 autocmd FileType vue.html.javascript.css nnoremap <LEADER>f  :execute ":normal! :/<script.*>/+1,/<\/script>/-1:call RangeJsBeautify()<CR>:noh<CR>:/<style.*>/+1,/<\/style>/-1 :call RangeCSSBeautify()<CR>:noh<CR>"
 
 " Edit vimrc in a vertical split
-nnoremap <leader>ev :vsplit $MYVIMRC<CR>
+nnoremap <leader>ev :vsplit ~/.vim/.vimrc<CR>
 " Refresh vim config from ~/.vimrc
 nnoremap <LEADER>sv :source $MYVIMRC<CR>
 
