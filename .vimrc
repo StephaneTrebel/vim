@@ -220,7 +220,7 @@ set writebackup
 " YouCompleteMe Fix
 let g:ycm_server_python_interpreter="/usr/bin/python2"
 
-"let g:editorconfig_Beautifier = "~/.editorconfig"
+let g:editorconfig_Beautifier = "~/.vim/.editorconfig"
 
 " Automatically refresh buffer on external changes
 set autoread
