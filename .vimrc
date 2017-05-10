@@ -27,7 +27,7 @@ Plugin 'nathanaelkane/vim-indent-guides'
 Plugin 'Raimondi/delimitMate'
 
 " Syntax checker
-" Plugin 'scrooloose/syntastic'
+Plugin 'scrooloose/syntastic'
 
 " Region Expansion
 Plugin 'terryma/vim-expand-region'
@@ -45,6 +45,22 @@ Plugin 'digitaltoad/vim-pug'
 Plugin 'posva/vim-vue'
 Plugin 'wavded/vim-stylus'
 Plugin 'mustache/vim-mustache-handlebars'
+
+" Typescript support
+Plugin 'Quramy/tsuquyomi'
+Plugin 'Shougo/vimproc.vim'
+let g:tsuquyomi_completion_detail = 1
+Plugin 'leafgarland/typescript-vim'
+let g:tsuquyomi_disable_quickfix = 1
+" You shouldn't use 'tsc' checker.
+let g:syntastic_typescript_checkers = ['tsuquyomi']
+autocmd FileType typescript nmap <buffer> <LEADER>t : <C-u>echo tsuquyomi#hint()<CR>
+autocmd FileType typescript nmap <buffer> <LEADER>i :TsuImport<CR>
+
+" Prettier conf
+" Don't forger to install prettier globally (npm install -g prettier)
+autocmd FileType javascript set formatprg=prettier\ --stdin
+autocmd BufWritePre *.js :normal gggqG
 
 call vundle#end()
 filetype plugin indent on
@@ -66,7 +82,6 @@ nnoremap <LEADER>w :w<CR>
 nnoremap <LEADER>n :NERDTreeToggle<CR>
 
 " Call JsBeautify
-autocmd FileType javascript nnoremap <LEADER>f :call JsBeautify()<CR>
 autocmd FileType json nnoremap <LEADER>f :call JsBeautify()<CR>
 autocmd FileType html noremap <buffer> <LEADER>f :call HtmlBeautify()<CR>
 autocmd FileType css noremap <buffer> <LEADER>f :call CSSBeautify()<CR>
@@ -173,16 +188,14 @@ set formatoptions=qrn1
 set colorcolumn=85
 
 " Syntastic options
-" Waiting for a working version of JSLint to reactivate
 " Customize status line with syntastic errors
-" set statusline+=%#warningmsg#
-" set statusline+=%{SyntasticStatuslineFlag()}
-" set statusline+=%*
-" let g:syntastic_always_populate_loc_list = 1
-" let g:syntastic_auto_loc_list = 1
-" let g:syntastic_check_on_open = 0
-" let g:syntastic_check_on_wq = 0
-" let g:syntastic_javascript_jslint_args = "--edition=latest --es6 --indent=4 --node --nomen"
+set statusline+=%#warningmsg#
+set statusline+=%{SyntasticStatuslineFlag()}
+set statusline+=%*
+let g:syntastic_always_populate_loc_list = 1
+let g:syntastic_auto_loc_list = 1
+let g:syntastic_check_on_open = 0
+let g:syntastic_check_on_wq = 0
 
 " Colorscheme
 set t_Co=256
