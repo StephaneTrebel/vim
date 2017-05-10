@@ -145,6 +145,8 @@ set shiftwidth=4
 set smarttab
 let delimitMate_expand_cr = 1
 
+" Misc
+set autochdir
 set encoding=utf-8
 set scrolloff=3
 set autoindent
