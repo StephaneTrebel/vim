@@ -56,11 +56,20 @@ let g:tsuquyomi_disable_quickfix = 1
 let g:syntastic_typescript_checkers = ['tsuquyomi']
 autocmd FileType typescript nmap <buffer> <LEADER>t : <C-u>echo tsuquyomi#hint()<CR>
 autocmd FileType typescript nmap <buffer> <LEADER>i :TsuImport<CR>
+autocmd FileType typescript nmap <buffer> <LEADER>r :TsuRenameSymbol<CR>
+
+" Ack support
+" Beware ! git.fsck might not like this plugin. Use manual install if needed:
+" git clone --config transfer.fsckobjects=false https://github.com/mileszs/ack.vim.git ~/.vim/bundle/ack.vim
+Plugin 'mileszs/ack.vim'
+
+" Better substitution: use S instead of s and never look back !
+Plugin 'tpope/vim-abolish'
 
 " Prettier conf
 " Don't forger to install prettier globally (npm install -g prettier)
-autocmd FileType javascript set formatprg=prettier\ --stdin
-autocmd BufWritePre *.js :normal gggqG
+" autocmd FileType javascript set formatprg=prettier\ --stdin
+" autocmd BufWritePre *.js :normal gggqG
 
 call vundle#end()
 filetype plugin indent on
@@ -123,7 +132,8 @@ nnoremap <F2> :tabp<CR>
 nnoremap <F3> :tabn<CR>
 
 " Toggle for system paste
-nnoremap <F4> :set paste!<CR>
+" Not needed on GNU/Linux
+" nnoremap <F4> :set paste!<CR>
 
 " Move lines up or down
 noremap <S-k> :m -2<CR>
@@ -145,16 +155,18 @@ set shiftwidth=4
 set smarttab
 let delimitMate_expand_cr = 1
 
+" File search
+set wildmenu
+set wildmode=list:longest
+set wildignore+=node_modules/*,bower_components/*
+
 " Misc
-set autochdir
 set encoding=utf-8
 set scrolloff=3
 set autoindent
 set showmode
 set showcmd
 set hidden
-set wildmenu
-set wildmode=list:longest
 set visualbell
 set cursorline
 set ttyfast
