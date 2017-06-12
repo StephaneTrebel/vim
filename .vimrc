@@ -67,9 +67,15 @@ Plugin 'mileszs/ack.vim'
 Plugin 'tpope/vim-abolish'
 
 " Prettier conf
-" Don't forger to install prettier globally (npm install -g prettier)
-" autocmd FileType javascript set formatprg=prettier\ --stdin
-" autocmd BufWritePre *.js :normal gggqG
+" Don't forget to install prettier globally (npm install -g prettier)
+ autocmd BufRead,BufEnter *.js setlocal formatprg=prettier\ --stdin
+ autocmd BufWritePre *.js :normal gggqG
+ autocmd BufRead,BufEnter *.ts setlocal formatprg=prettier\ --stdin\ --parser\ typescript
+ autocmd BufWritePre *.ts :normal gggqG
+ autocmd BufRead,BufEnter *.css setlocal formatprg=prettier\ --stdin\ postcss
+ autocmd BufWritePre *.css :normal gggqG
+ autocmd BufRead,BufEnter *.scss setlocal formatprg=prettier\ --stdin\ --parser\ postcss
+ autocmd BufWritePre *.scss :normal gggqG
 
 call vundle#end()
 filetype plugin indent on
@@ -89,12 +95,6 @@ nnoremap <LEADER>, :noh<CR>
 nnoremap <LEADER>w :w<CR>
 " Toggle NERDTree panel
 nnoremap <LEADER>n :NERDTreeToggle<CR>
-
-" Call JsBeautify
-autocmd FileType json nnoremap <LEADER>f :call JsBeautify()<CR>
-autocmd FileType html noremap <buffer> <LEADER>f :call HtmlBeautify()<CR>
-autocmd FileType css noremap <buffer> <LEADER>f :call CSSBeautify()<CR>
-autocmd FileType scss noremap <buffer> <LEADER>f :call CSSBeautify()<CR>
 
 " Call JsBeautify for vue components:
 " * Beautify js for the <script></script> region
