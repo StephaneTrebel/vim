@@ -66,6 +66,9 @@ Plugin 'mileszs/ack.vim'
 " Better substitution: use S instead of s and never look back !
 Plugin 'tpope/vim-abolish'
 
+call vundle#end()
+filetype plugin indent on
+
 " Prettier conf
 " Don't forget to install prettier globally (npm install -g prettier)
  autocmd BufRead,BufEnter *.js setlocal formatprg=prettier\ --stdin
@@ -76,9 +79,6 @@ Plugin 'tpope/vim-abolish'
  autocmd BufWritePre *.css :normal gggqG
  autocmd BufRead,BufEnter *.scss setlocal formatprg=prettier\ --stdin\ --parser\ postcss
  autocmd BufWritePre *.scss :normal gggqG
-
-call vundle#end()
-filetype plugin indent on
 
 " Security concerns and useless anyway
 set modelines=0
@@ -96,6 +96,9 @@ nnoremap <LEADER>w :w<CR>
 " Toggle NERDTree panel
 nnoremap <LEADER>n :NERDTreeToggle<CR>
 
+" Auto beautify for JSON
+autocmd BufWritePre *.json :call JsonBeautify()
+
 " Call JsBeautify for vue components:
 " * Beautify js for the <script></script> region
 " * Beautify [s]css for the <style></style> region
@@ -107,6 +110,7 @@ function! BeautifyVue()
     noh
 endfunction
 autocmd FileType vue.html.javascript.css nnoremap <LEADER>f :call BeautifyVue()<CR>
+
 " Edit vimrc in a vertical split
 nnoremap <leader>ev :vsplit ~/.vim/.vimrc<CR>
 " Refresh vim config from ~/.vimrc
