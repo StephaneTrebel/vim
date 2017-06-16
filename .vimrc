@@ -57,6 +57,7 @@ let g:syntastic_typescript_checkers = ['tsuquyomi']
 autocmd FileType typescript nmap <buffer> <LEADER>t : <C-u>echo tsuquyomi#hint()<CR>
 autocmd FileType typescript nmap <buffer> <LEADER>i :TsuImport<CR>
 autocmd FileType typescript nmap <buffer> <LEADER>r :TsuRenameSymbol<CR>
+autocmd FileType typescript nmap <buffer> <LEADER>d :TsuDefinition<CR>
 
 " Ack support
 " Beware ! git.fsck might not like this plugin. Use manual install if needed:
@@ -74,14 +75,14 @@ filetype plugin indent on
 
 " Prettier conf
 " Don't forget to install prettier globally (npm install -g prettier)
- autocmd BufRead,BufEnter *.js setlocal formatprg=prettier\ --stdin
- autocmd BufWritePre *.js :normal gggqG
- autocmd BufRead,BufEnter *.ts setlocal formatprg=prettier\ --stdin\ --parser\ typescript
- autocmd BufWritePre *.ts :normal gggqG
- autocmd BufRead,BufEnter *.css setlocal formatprg=prettier\ --stdin\ postcss
- autocmd BufWritePre *.css :normal gggqG
- autocmd BufRead,BufEnter *.scss setlocal formatprg=prettier\ --stdin\ --parser\ postcss
- autocmd BufWritePre *.scss :normal gggqG
+autocmd BufRead,BufEnter *.js setlocal formatprg=prettier\ --stdin
+autocmd BufWritePre *.js :normal magggqG`a
+autocmd BufRead,BufEnter *.ts setlocal formatprg=prettier\ --stdin\ --parser\ typescript
+autocmd BufWritePre *.ts :normal magggqG`a
+autocmd BufRead,BufEnter *.css setlocal formatprg=prettier\ --stdin\ postcss
+autocmd BufWritePre *.css :normal magggqG`a
+autocmd BufRead,BufEnter *.scss setlocal formatprg=prettier\ --stdin\ --parser\ postcss
+autocmd BufWritePre *.scss :normal magggqG`a
 
 " Security concerns and useless anyway
 set modelines=0
@@ -287,5 +288,3 @@ nmap s <Plug>(easymotion-overwin-f2)
 " Turn on case insensitive feature
 let g:EasyMotion_smartcase = 1
 " JK motions: Line motions
-map <Leader>j <Plug>(easymotion-j)
-map <Leader>k <Plug>(easymotion-k)
