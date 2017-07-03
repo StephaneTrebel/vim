@@ -52,8 +52,6 @@ Plugin 'Shougo/vimproc.vim'
 let g:tsuquyomi_completion_detail = 1
 Plugin 'leafgarland/typescript-vim'
 let g:tsuquyomi_disable_quickfix = 1
-" You shouldn't use 'tsc' checker.
-let g:syntastic_typescript_checkers = ['tsuquyomi']
 autocmd FileType typescript nmap <buffer> <LEADER>t : <C-u>echo tsuquyomi#hint()<CR>
 autocmd FileType typescript nmap <buffer> <LEADER>i :TsuImport<CR>
 autocmd FileType typescript nmap <buffer> <LEADER>r :TsuRenameSymbol<CR>
@@ -214,10 +212,14 @@ set colorcolumn=85
 set statusline+=%#warningmsg#
 set statusline+=%{SyntasticStatuslineFlag()}
 set statusline+=%*
+" You shouldn't use 'tsc' checker.
+let g:syntastic_typescript_checkers = ['tsuquyomi', 'tslint']
+let g:syntastic_typescript_tslint_args = "--project tslint.json"
+let g:syntastic_aggregate_errors = 1
 let g:syntastic_always_populate_loc_list = 1
 let g:syntastic_auto_loc_list = 1
-let g:syntastic_check_on_open = 0
-let g:syntastic_check_on_wq = 0
+let g:syntastic_check_on_open = 1
+let g:syntastic_check_on_wq = 1
 
 " Colorscheme
 set t_Co=256
@@ -255,6 +257,8 @@ set backupcopy=yes
 
 " YouCompleteMe Fix
 let g:ycm_server_python_interpreter="/usr/bin/python2"
+" Désactiver l'alimentation de la Location list par YCM (fait par syntastic)
+let g:ycm_always_populate_location_list=0
 
 let g:editorconfig_Beautifier = "~/.vim/.editorconfig"
 
