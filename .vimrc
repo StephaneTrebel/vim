@@ -56,6 +56,7 @@ autocmd FileType typescript nmap <buffer> <LEADER>t : <C-u>echo tsuquyomi#hint()
 autocmd FileType typescript nmap <buffer> <LEADER>i :TsuImport<CR>
 autocmd FileType typescript nmap <buffer> <LEADER>r :TsuRenameSymbol<CR>
 autocmd FileType typescript nmap <buffer> <LEADER>d :TsuDefinition<CR>
+autocmd FileType typescript nmap <buffer> <LEADER>g :TsuGoBack<CR>
 
 " Ack support
 " Beware ! git.fsck might not like this plugin. Use manual install if needed:
@@ -68,19 +69,25 @@ Plugin 'tpope/vim-abolish'
 " Easy motion
 Plugin 'easymotion/vim-easymotion'
 
+" Code formatting
+Plugin 'sbdchd/neoformat'
+
 call vundle#end()
 filetype plugin indent on
 
-" Prettier conf
+" Formatter conf
 " Don't forget to install prettier globally (npm install -g prettier)
-autocmd BufRead,BufEnter *.js setlocal formatprg=prettier\ --stdin
-autocmd BufWritePre *.js :normal magggqG`a
-autocmd BufRead,BufEnter *.ts setlocal formatprg=prettier\ --stdin\ --parser\ typescript
-autocmd BufWritePre *.ts :normal magggqG`a
-autocmd BufRead,BufEnter *.css setlocal formatprg=prettier\ --stdin\ postcss
-autocmd BufWritePre *.css :normal magggqG`a
-autocmd BufRead,BufEnter *.scss setlocal formatprg=prettier\ --stdin\ --parser\ postcss
-autocmd BufWritePre *.scss :normal magggqG`a
+" Use BufWritePre,TextChanged,InsertLeave if you want to format on all text
+" modifications/insertions instead of just on file write
+autocmd BufWritePre *.js Neoformat
+autocmd FileType javascript setlocal formatprg=prettier\ --stdin\ --parser\ babylon\ --single-quote\ --trailing-comma\ all
+autocmd BufWritePre *.json Neoformat
+autocmd FileType json setlocal formatprg=prettier\ --stdin\ --parser\ babylon\ --single-quote\ --trailing-comma\ all
+autocmd BufWritePre *.ts Neoformat
+autocmd FileType typescript setlocal formatprg=prettier\ --stdin\ --parser\ typescript\ --single-quote\ --trailing-comma\ all
+autocmd BufWritePre *.scss Neoformat
+autocmd FileType scss setlocal formatprg=prettier\ --stdin\ --parser\ postcss
+let g:neoformat_try_formatprg = 1
 
 " Security concerns and useless anyway
 set modelines=0
@@ -98,20 +105,20 @@ nnoremap <LEADER>w :w<CR>
 " Toggle NERDTree panel
 nnoremap <LEADER>n :NERDTreeToggle<CR>
 
-" Auto beautify for JSON
-autocmd BufWritePre *.json :call JsonBeautify()
-
-" Call JsBeautify for vue components:
-" * Beautify js for the <script></script> region
+" Beautify vue SFC files:
+" * Beautify ts for the <script></script> region
 " * Beautify [s]css for the <style></style> region
 " I have not included HTML because I prefer Jade/Pug and since it's whitespace
 " based there's not much sense in having to beautify it I guess
 function! BeautifyVue()
-    /<script.*>/+1,/<\/script>/-1:call RangeJsBeautify()
-    /<style.*>/+1,/<\/style>/-1:call RangeCSSBeautify()
+    setlocal formatprg=prettier\ --stdin\ --parser\ typescript\ --single-quote\ --trailing-comma\ all
+    /<script.*>/+1,/<\/script>/-1:Neoformat
+    setlocal formatprg=prettier\ --stdin\ --parser\ postcss
+    /<style.*>/+1,/<\/style>/-1:Neoformat
     noh
 endfunction
-autocmd FileType vue.html.javascript.css nnoremap <LEADER>f :call BeautifyVue()<CR>
+autocmd FileType vue nnoremap <LEADER>f :call BeautifyVue()<CR>
+autocmd BufWritePre *.vue call BeautifyVue()
 
 " Edit vimrc in a vertical split
 nnoremap <leader>ev :vsplit ~/.vim/.vimrc<CR>
@@ -292,3 +299,5 @@ nmap s <Plug>(easymotion-overwin-f2)
 " Turn on case insensitive feature
 let g:EasyMotion_smartcase = 1
 " JK motions: Line motions
+
+let g:NERDSpaceDelims = 1
