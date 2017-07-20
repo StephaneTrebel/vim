@@ -74,6 +74,12 @@ Plugin 'sbdchd/neoformat'
 
 call vundle#end()
 filetype plugin indent on
+"
+" Treat *.md files as markdown syntax (default is modula2)
+au BufNewFile,BufFilePre,BufRead *.md set filetype=markdown
+" Treat *.tag files as jsp syntax (default is mason)
+au BufNewFile,BufFilePre,BufRead *.tag set filetype=jsp
+
 
 " Formatter conf
 " Don't forget to install prettier globally (npm install -g prettier)
@@ -88,6 +94,9 @@ autocmd FileType typescript setlocal formatprg=prettier\ --stdin\ --parser\ type
 autocmd BufWritePre *.scss Neoformat
 autocmd FileType scss setlocal formatprg=prettier\ --stdin\ --parser\ postcss
 let g:neoformat_try_formatprg = 1
+" Remove wrapping for markdown (markdown interperters do it automatically for
+" display anyway
+autocmd FileType markdown setlocal tw=0
 
 " Security concerns and useless anyway
 set modelines=0
@@ -248,11 +257,6 @@ noremap <left> <nop>
 noremap <right> <nop>
 nnoremap j gj
 nnoremap k gk
-
-" Treat *.md files as markdown syntax (default is modula2)
-au BufNewFile,BufFilePre,BufRead *.md set filetype=markdown
-" Treat *.tag files as jsp syntax (default is mason)
-au BufNewFile,BufFilePre,BufRead *.tag set filetype=jsp
 
 " Centralize all vim temp files in home folder
 set backup
