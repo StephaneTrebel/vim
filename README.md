@@ -3,19 +3,24 @@ My .vim folder with every plugin and my own annotated .vimrc file
 
 # Requirements
 
-- nodejs (Optional, for YCM javascript tern support)
+- nodejs (Optional but highly recommended, for YCM javascript tern support, typescript, tslint, and prettier)
 - vim-gtk/vim-gnome (Optional, for system clipboard sync support)
 
 # Installation
 - Clone this repo in your Home folder
-- Add a *.vimrc* file in your home folder linking to my .vimrc file: `echo source ~/.vim/.vimrc > ~/.vimrc`
+- Add a *.vimrc* file in your home folder linking to my .vimrc file: 
+
+```javascript
+echo source ~/.vim/.vimrc > ~/.vimrc
+```
+
 - Install Vundle:
 
 ```javascript
 cd .vim && git submodule init && git submodule update
 ```
 
-- Launch `vim`, pass the error message with `Enter` and type `:PluginInstall`. At launch, there will be an error about "ycm_core". Just skip it with `Enter`
+- Launch `vim`, pass the error messages with `Enter` and type `:PluginInstall` and `Enter`.
 - When finished, exit and compile [YouCompleteMe](https://github.com/Valloric/YouCompleteMe):
 
 ```bash
