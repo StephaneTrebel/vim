@@ -88,7 +88,7 @@ au BufNewFile,BufFilePre,BufRead *.tag set filetype=jsp
 autocmd BufWritePre *.js Neoformat
 autocmd FileType javascript setlocal formatprg=prettier\ --stdin\ --parser\ babylon\ --single-quote\ --trailing-comma\ all
 autocmd BufWritePre *.json Neoformat
-autocmd FileType json setlocal formatprg=prettier\ --stdin\ --parser\ babylon\ --single-quote\ --trailing-comma\ all
+autocmd FileType json setlocal formatprg=prettier\ --stdin\ --parser\ json
 autocmd BufWritePre *.ts Neoformat
 autocmd FileType typescript setlocal formatprg=prettier\ --stdin\ --parser\ typescript\ --single-quote\ --trailing-comma\ all
 autocmd BufWritePre *.scss Neoformat
@@ -247,6 +247,7 @@ set list
 
 " Switch back from Insert mode to Normal mode easily
 inoremap jk <ESC>
+inoremap kj <ESC>
 
 " Force learn ^^'
 noremap <F1> <nop>
