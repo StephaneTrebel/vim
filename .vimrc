@@ -80,6 +80,8 @@ filetype plugin indent on
 au BufNewFile,BufFilePre,BufRead *.md set filetype=markdown
 " Treat *.tag files as jsp syntax (default is mason)
 au BufNewFile,BufFilePre,BufRead *.tag set filetype=jsp
+" Treat *.dockerfile files as dockerfile syntax
+au BufNewFile,BufFilePre,BufRead *.dockerfile set filetype=dockerfile
 
 
 " Formatter conf
