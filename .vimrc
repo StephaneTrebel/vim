@@ -56,6 +56,7 @@ autocmd FileType typescript nmap <buffer> <LEADER>t : <C-u>echo tsuquyomi#hint()
 autocmd FileType typescript nmap <buffer> <LEADER>i :TsuImport<CR>
 autocmd FileType typescript nmap <buffer> <LEADER>r :TsuRenameSymbol<CR>
 autocmd FileType typescript nmap <buffer> <LEADER>d :TsuDefinition<CR>
+autocmd FileType typescript nmap <buffer> <LEADER>f :TsuReferences<CR>
 autocmd FileType typescript nmap <buffer> <LEADER>g :TsuGoBack<CR>
 
 " Ack support
