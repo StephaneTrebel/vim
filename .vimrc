@@ -238,7 +238,7 @@ let g:syntastic_aggregate_errors = 1
 let g:syntastic_always_populate_loc_list = 1
 let g:syntastic_auto_loc_list = 1
 let g:syntastic_check_on_open = 0
-let g:syntastic_check_on_wq = 1
+let g:syntastic_check_on_wq = 0
 
 " Colorscheme
 set t_Co=256
@@ -309,3 +309,5 @@ let g:EasyMotion_smartcase = 1
 " JK motions: Line motions
 
 let g:NERDSpaceDelims = 1
+
+syntax enable
