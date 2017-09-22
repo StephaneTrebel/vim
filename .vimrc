@@ -52,6 +52,7 @@ Plugin 'Shougo/vimproc.vim'
 let g:tsuquyomi_completion_detail = 1
 Plugin 'leafgarland/typescript-vim'
 let g:tsuquyomi_disable_quickfix = 1
+autocmd FileType typescript nmap <buffer> <LEADER>b :Neoformat<CR>
 autocmd FileType typescript nmap <buffer> <LEADER>t : <C-u>echo tsuquyomi#hint()<CR>
 autocmd FileType typescript nmap <buffer> <LEADER>i :TsuImport<CR>
 autocmd FileType typescript nmap <buffer> <LEADER>r :TsuRenameSymbol<CR>
@@ -92,7 +93,7 @@ autocmd BufWritePre *.js Neoformat
 autocmd FileType javascript setlocal formatprg=prettier\ --stdin\ --parser\ babylon\ --single-quote\ --trailing-comma\ all
 autocmd BufWritePre *.json Neoformat
 autocmd FileType json setlocal formatprg=prettier\ --stdin\ --parser\ json
-autocmd BufWritePre *.ts Neoformat
+" autocmd BufWritePre *.ts Neoformat
 autocmd FileType typescript setlocal formatprg=prettier\ --stdin\ --parser\ typescript\ --single-quote\ --trailing-comma\ all
 autocmd BufWritePre *.scss Neoformat
 autocmd FileType scss setlocal formatprg=prettier\ --stdin\ --parser\ postcss
@@ -129,7 +130,7 @@ function! BeautifyVue()
     /<style.*>/+1,/<\/style>/-1:Neoformat
     noh
 endfunction
-autocmd FileType vue nnoremap <LEADER>f :call BeautifyVue()<CR>
+autocmd FileType vue nnoremap <LEADER>b :call BeautifyVue()<CR>
 autocmd BufWritePre *.vue call BeautifyVue()
 
 " Edit vimrc in a vertical split
@@ -232,6 +233,7 @@ set statusline+=%#warningmsg#
 set statusline+=%{SyntasticStatuslineFlag()}
 set statusline+=%*
 " You shouldn't use 'tsc' checker.
+let g:syntastic_mode_map = { "mode": "passive" }
 let g:syntastic_typescript_checkers = ['tsuquyomi', 'tslint']
 let g:syntastic_typescript_tslint_args = "--project tslint.json"
 let g:syntastic_aggregate_errors = 1
@@ -239,6 +241,7 @@ let g:syntastic_always_populate_loc_list = 1
 let g:syntastic_auto_loc_list = 1
 let g:syntastic_check_on_open = 0
 let g:syntastic_check_on_wq = 0
+autocmd FileType typescript nmap <buffer> <LEADER>c :SyntasticCheck<CR>
 
 " Colorscheme
 set t_Co=256
