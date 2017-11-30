@@ -1,6 +1,6 @@
 *~*
-bundle/
-undo/%*
-swap/%*
-swap/*.swp
-backup/%*
+.vim/bundle/
+.vim/undo/%*
+.vim/swap/%*
+.vim/swap/*.swp
+.vim/backup/%*

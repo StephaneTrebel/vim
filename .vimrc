@@ -89,6 +89,8 @@ au BufNewFile,BufFilePre,BufRead *.dockerfile set filetype=dockerfile
 " Don't forget to install prettier globally (npm install -g prettier)
 " Use BufWritePre,TextChanged,InsertLeave if you want to format on all text
 " modifications/insertions instead of just on file write
+autocmd FileType json nmap <buffer> <LEADER>b :Neoformat<CR>
+autocmd FileType javascript nmap <buffer> <LEADER>b :Neoformat<CR>
 autocmd BufWritePre *.js Neoformat
 autocmd FileType javascript setlocal formatprg=prettier\ --stdin\ --parser\ babylon\ --single-quote\ --trailing-comma\ all
 autocmd BufWritePre *.json Neoformat
@@ -101,6 +103,8 @@ let g:neoformat_try_formatprg = 1
 " Remove wrapping for markdown (markdown interperters do it automatically for
 " display anyway
 autocmd FileType markdown setlocal tw=0
+
+autocmd FileType yaml setlocal shiftwidth=2 tabstop=2
 
 " Security concerns and useless anyway
 set modelines=0
