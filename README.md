@@ -1,30 +1,32 @@
 # What's this ?
-My .vim folder with every plugin and my own annotated .vimrc file
+My .vim folder with every plugin I use and my own annotated .vimrc file
 
 # Requirements
 
+- GNU stow, to handily install dotfiles in your home folder
 - nodejs (Optional but highly recommended, for YCM javascript tern support, typescript, tslint, and prettier)
 - vim-gtk/vim-gnome (Optional, for system clipboard sync support)
 
 # Installation
-- Clone this repo in your Home folder
-- Add a *.vimrc* file in your home folder linking to my .vimrc file: 
+- Create a dotfiles or .dotfiles directory if you haven't already
+- Clone this repo in your dotfiles directory
+- Use GNU stow to make all required symlink:
 
-```javascript
-echo source ~/.vim/.vimrc > ~/.vimrc
+```bash
+# stow vim
 ```
 
 - Install Vundle:
 
 ```javascript
-cd .vim && git submodule init && git submodule update
+cd <DOTFILES_DIRECTORY>/vim && git submodule init && git submodule update
 ```
 
 - Launch `vim`, pass the error messages with `Enter` and type `:PluginInstall` and `Enter`.
 - When finished, exit and compile [YouCompleteMe](https://github.com/Valloric/YouCompleteMe):
 
 ```bash
-# Warning: this will only install javascript support, for other options go to the YouCompleteMe repo for explanations
+# Warning: this will only give you javascript support, for other options go to the YouCompleteMe repo for explanations
 
 # Install C dependencies
 sudo apt-get install build-essential cmake
@@ -58,3 +60,5 @@ powerful albeit challenging text editor.
 Special mentions:
 
 - http://learnvimscriptthehardway.stevelosh.com/
+- GNU stow
+- http://brandon.invergo.net/news/2012-05-26-using-gnu-stow-to-manage-your-dotfiles.html
