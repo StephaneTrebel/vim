@@ -138,9 +138,9 @@ autocmd FileType vue nnoremap <LEADER>b :call BeautifyVue()<CR>
 autocmd BufWritePre *.vue call BeautifyVue()
 
 " Edit vimrc in a vertical split
-nnoremap <leader>ev :vsplit ~/.vim/.vimrc<CR>
+nnoremap <leader>ev :vsplit ~/.vimrc<CR>
 " Refresh vim config from ~/.vimrc
-nnoremap <LEADER>sv :source $MYVIMRC<CR>
+nnoremap <LEADER>sv :source ~/.vimrc<CR>
 
 " Append a semicolon and the end of current line
 nnoremap <LEADER>a A;<ESC>
