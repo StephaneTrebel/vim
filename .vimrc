@@ -48,7 +48,6 @@ Plugin 'mustache/vim-mustache-handlebars'
 
 " Typescript support
 Plugin 'Quramy/tsuquyomi'
-Plugin 'Shougo/vimproc.vim'
 let g:tsuquyomi_completion_detail = 1
 Plugin 'leafgarland/typescript-vim'
 let g:tsuquyomi_disable_quickfix = 1
@@ -98,7 +97,7 @@ autocmd FileType json setlocal formatprg=prettier\ --stdin\ --parser\ json
 " autocmd BufWritePre *.ts Neoformat
 autocmd FileType typescript setlocal formatprg=prettier\ --stdin\ --parser\ typescript\ --single-quote\ --trailing-comma\ all
 autocmd BufWritePre *.scss Neoformat
-autocmd FileType scss setlocal formatprg=prettier\ --stdin\ --parser\ postcss
+autocmd FileType scss setlocal formatprg=prettier\ --stdin\ --parser\ css
 let g:neoformat_try_formatprg = 1
 " Remove wrapping for markdown (markdown interperters do it automatically for
 " display anyway
@@ -246,6 +245,9 @@ let g:syntastic_auto_loc_list = 1
 let g:syntastic_check_on_open = 0
 let g:syntastic_check_on_wq = 0
 autocmd FileType typescript nmap <buffer> <LEADER>c :SyntasticCheck<CR>
+" Navigate through errors
+autocmd FileType typescript nmap <buffer> ! :lnext<CR>
+autocmd FileType typescript nmap <buffer> § :lprevious<CR>
 
 " Colorscheme
 set t_Co=256
@@ -279,7 +281,7 @@ set backupcopy=yes
 
 " YouCompleteMe Fix
 let g:ycm_server_python_interpreter="/usr/bin/python2"
-" Désactiver l'alimentation de la Location list par YCM (fait par syntastic)
+" Disable location list population by YCM (already done by syntastic)
 let g:ycm_always_populate_location_list=0
 
 let g:editorconfig_Beautifier = "~/.vim/.editorconfig"
