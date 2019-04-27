@@ -26,9 +26,6 @@ Plugin 'Valloric/YouCompleteMe'
 Plugin 'nathanaelkane/vim-indent-guides'
 Plugin 'Raimondi/delimitMate'
 
-" Syntax checker
-Plugin 'scrooloose/syntastic'
-
 " Region Expansion
 Plugin 'terryma/vim-expand-region'
 
@@ -51,13 +48,14 @@ Plugin 'Quramy/tsuquyomi'
 let g:tsuquyomi_completion_detail = 1
 Plugin 'leafgarland/typescript-vim'
 let g:tsuquyomi_disable_quickfix = 1
-autocmd FileType typescript nmap <buffer> <LEADER>b :Neoformat<CR>
-autocmd FileType typescript nmap <buffer> <LEADER>t : <C-u>echo tsuquyomi#hint()<CR>
-autocmd FileType typescript nmap <buffer> <LEADER>i :TsuImport<CR>
-autocmd FileType typescript nmap <buffer> <LEADER>r :TsuRenameSymbol<CR>
 autocmd FileType typescript nmap <buffer> <LEADER>d :TsuDefinition<CR>
 autocmd FileType typescript nmap <buffer> <LEADER>f :TsuReferences<CR>
 autocmd FileType typescript nmap <buffer> <LEADER>g :TsuGoBack<CR>
+autocmd FileType typescript nmap <buffer> <LEADER>i :TsuImport<CR>
+autocmd FileType typescript nmap <buffer> <LEADER>r :TsuRenameSymbol<CR>
+autocmd FileType typescript nmap <buffer> <LEADER>t : <C-u>echo tsuquyomi#hint()<CR>
+autocmd FileType typescript nmap <buffer> <LEADER>x :TsuQuickFix<CR>
+autocmd FileType typescript setlocal completeopt-=preview
 
 " Ack support
 " Beware ! git.fsck might not like this plugin. Use manual install if needed:
@@ -72,6 +70,19 @@ Plugin 'easymotion/vim-easymotion'
 
 " Code formatting
 Plugin 'sbdchd/neoformat'
+
+" Easy Align
+Plugin 'junegunn/vim-easy-align'
+" Start interactive EasyAlign in visual mode (e.g. vipga)
+xmap ga <Plug>(EasyAlign)
+" Start interactive EasyAlign for a motion/text object (e.g. gaip)
+nmap ga <Plug>(EasyAlign)
+
+" Syntax checker
+Plugin 'scrooloose/syntastic'
+
+" RobotFramework syntax support
+Plugin 'mfukar/robotframework-vim'
 
 call vundle#end()
 filetype plugin indent on
@@ -88,22 +99,35 @@ au BufNewFile,BufFilePre,BufRead *.dockerfile set filetype=dockerfile
 " Don't forget to install prettier globally (npm install -g prettier)
 " Use BufWritePre,TextChanged,InsertLeave if you want to format on all text
 " modifications/insertions instead of just on file write
-autocmd FileType json nmap <buffer> <LEADER>b :Neoformat<CR>
+
 autocmd FileType javascript nmap <buffer> <LEADER>b :Neoformat<CR>
 autocmd BufWritePre *.js Neoformat
 autocmd FileType javascript setlocal formatprg=prettier\ --stdin\ --parser\ babylon\ --single-quote\ --trailing-comma\ all
+
+autocmd FileType json nmap <buffer> <LEADER>b :Neoformat<CR>
 autocmd BufWritePre *.json Neoformat
 autocmd FileType json setlocal formatprg=prettier\ --stdin\ --parser\ json
-" autocmd BufWritePre *.ts Neoformat
+
+autocmd FileType typescript nmap <buffer> <LEADER>b :Neoformat<CR>
+" autocmd BufWritePre *.ts Neoformat " Disabled because I find it cumbersome
 autocmd FileType typescript setlocal formatprg=prettier\ --stdin\ --parser\ typescript\ --single-quote\ --trailing-comma\ all
+
+autocmd FileType scss nmap <buffer> <LEADER>b :Neoformat<CR>
 autocmd BufWritePre *.scss Neoformat
-autocmd FileType scss setlocal formatprg=prettier\ --stdin\ --parser\ css
+autocmd FileType scss setlocal formatprg=prettier\ --stdin\ --parser\ css\ --single-quote
+
+autocmd FileType yaml nmap <buffer> <LEADER>b :Neoformat<CR>
+autocmd BufWritePre *.yml Neoformat
+autocmd BufWritePre *.yaml Neoformat
+autocmd FileType yaml setlocal formatprg=prettier\ --stdin\ --parser\ yaml\ --single-quote
+autocmd FileType yaml setlocal shiftwidth=2 tabstop=2
+
 let g:neoformat_try_formatprg = 1
+
 " Remove wrapping for markdown (markdown interperters do it automatically for
 " display anyway
 autocmd FileType markdown setlocal tw=0
 
-autocmd FileType yaml setlocal shiftwidth=2 tabstop=2
 
 " Security concerns and useless anyway
 set modelines=0
@@ -149,29 +173,19 @@ vnoremap <LEADER>p "_dP
 
 " Move around windows
 nnoremap <LEADER>h <C-w>h
-nnoremap <LEADER>j <C-w>j
-nnoremap <LEADER>k <C-w>k
-nnoremap <LEADER>l <C-w>l
+nnoremap <LEADER><Left> <C-w>h
+nnoremap <LEADER><Down> <C-w>j
+nnoremap <LEADER><Up> <C-w>k
+nnoremap <LEADER><Right> <C-w>l
 
 " If no file required at CLI invoke, open with NERDTree
 autocmd VimEnter * if argc() == 0 && !exists("s:std_in") | NERDTree | endif
+let NERDTreeShowLineNumbers=1
+let NERDTreeMinimalUI=1
 
 " Tab movement
 nnoremap <F2> :tabp<CR>
 nnoremap <F3> :tabn<CR>
-
-" Toggle for system paste
-" Not needed on GNU/Linux
-" nnoremap <F4> :set paste!<CR>
-
-" Move lines up or down
-noremap <S-k> :m -2<CR>
-noremap <S-j> :m +1<CR>
-vnoremap <S-k> xkP`[V`]
-vnoremap <S-j> xp`[V`]
-
-" Duplicate a line or block
-noremap <C-S-d> yyp
 
 " Default selection to region expansion
 "noremap <r> <Plug>(expand_region_expand)
@@ -247,29 +261,22 @@ let g:syntastic_check_on_wq = 0
 autocmd FileType typescript nmap <buffer> <LEADER>c :SyntasticCheck<CR>
 " Navigate through errors
 autocmd FileType typescript nmap <buffer> ! :lnext<CR>
-autocmd FileType typescript nmap <buffer> § :lprevious<CR>
+autocmd FileType typescript nmap <buffer> <LEADER>! :lprevious<CR>
 
 " Colorscheme
 set t_Co=256
 colorscheme inkpot
 
 " Display trailing spaces and other stuff
-set listchars=tab:>-,trail:~,extends:>,precedes:<
+set listchars=tab:>-,trail:~,extends:>,precedes:<,nbsp:⎵
 set list
-
-" Switch back from Insert mode to Normal mode easily
-inoremap jk <ESC>
-inoremap kj <ESC>
 
 " Force learn ^^'
 noremap <F1> <nop>
-inoremap <ESC> <nop>
-noremap <up> <nop>
-noremap <down> <nop>
-noremap <left> <nop>
-noremap <right> <nop>
 nnoremap j gj
 nnoremap k gk
+inoremap «» <ESC>
+inoremap »« <ESC>
 
 " Centralize all vim temp files in home folder
 set backup
@@ -280,7 +287,7 @@ set writebackup
 set backupcopy=yes
 
 " YouCompleteMe Fix
-let g:ycm_server_python_interpreter="/usr/bin/python2"
+let g:ycm_server_python_interpreter="/usr/bin/python3"
 " Disable location list population by YCM (already done by syntastic)
 let g:ycm_always_populate_location_list=0
 
@@ -296,19 +303,11 @@ set autoread
 " (see http://vim.wikia.com/wiki/Accessing_the_system_clipboard for more info)
 set clipboard=unnamedplus
 
-" Abbreviations for common typos I make, feel free to extend this !
-iabbrev adn and
-iabbrev dnas dans
-iabbrev udpate update
-
-" Abbreviations for javascript snippets I use all the time
-autocmd FileType javascript iabbrev FUNC function () {<CR>
-
 " Easymotion configuration
 let g:EasyMotion_do_mapping = 0 " Disable default mappings
 " Jump to anywhere you want with minimal keystrokes, with just one key binding.
 " `s{char}{label}`
-nmap s <Plug>(easymotion-overwin-f)
+" nmap s <Plug>(easymotion-overwin-f)
 " or
 " `s{char}{char}{label}`
 " Need one more keystroke, but on average, it may be more comfortable.
@@ -318,5 +317,9 @@ let g:EasyMotion_smartcase = 1
 " JK motions: Line motions
 
 let g:NERDSpaceDelims = 1
+
+" Open files of location/quickfix lists in new tabs instead of in the current
+" buffer
+set switchbuf+=newtab
 
 syntax enable
