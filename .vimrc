@@ -17,8 +17,6 @@ Plugin 'scrooloose/nerdcommenter'
 " .editorconfig support
 Plugin 'editorconfig/editorconfig-vim'
 
-Plugin 'maksimr/vim-jsbeautify'
-
 " Autocomplete
 Plugin 'Valloric/YouCompleteMe'
 
@@ -35,8 +33,6 @@ Plugin 'tpope/vim-surround'
 " Best status bar ever
 Plugin 'vim-airline/vim-airline'
 
-" Syntax (Highlighting)
-Plugin 'pangloss/vim-javascript'
 Plugin 'cakebaker/scss-syntax.vim'
 Plugin 'digitaltoad/vim-pug'
 Plugin 'posva/vim-vue'
@@ -84,6 +80,12 @@ Plugin 'scrooloose/syntastic'
 " RobotFramework syntax support
 Plugin 'mfukar/robotframework-vim'
 
+" Jenkinsfile syntax highlighting
+Plugin 'martinda/Jenkinsfile-vim-syntax'
+
+" Javascript syntax highlighting
+Plugin 'pangloss/vim-javascript'
+
 call vundle#end()
 filetype plugin indent on
 "
@@ -96,13 +98,14 @@ au BufNewFile,BufFilePre,BufRead *.dockerfile set filetype=dockerfile
 
 
 " Formatter conf
-" Don't forget to install prettier globally (npm install -g prettier)
-" Use BufWritePre,TextChanged,InsertLeave if you want to format on all text
-" modifications/insertions instead of just on file write
 
+" Default formatting = vim native indentation
+autocmd FileType * nmap <buffer> <LEADER>b ggVG=<CR>
+
+" Don't forget to install prettier globally (npm install -g prettier)
 autocmd FileType javascript nmap <buffer> <LEADER>b :Neoformat<CR>
 autocmd BufWritePre *.js Neoformat
-autocmd FileType javascript setlocal formatprg=prettier\ --stdin\ --parser\ babylon\ --single-quote\ --trailing-comma\ all
+autocmd FileType javascript setlocal formatprg=prettier\ --stdin\ --parser\ typescript
 
 autocmd FileType json nmap <buffer> <LEADER>b :Neoformat<CR>
 autocmd BufWritePre *.json Neoformat
@@ -110,17 +113,16 @@ autocmd FileType json setlocal formatprg=prettier\ --stdin\ --parser\ json
 
 autocmd FileType typescript nmap <buffer> <LEADER>b :Neoformat<CR>
 " autocmd BufWritePre *.ts Neoformat " Disabled because I find it cumbersome
-autocmd FileType typescript setlocal formatprg=prettier\ --stdin\ --parser\ typescript\ --single-quote\ --trailing-comma\ all
+autocmd FileType typescript setlocal formatprg=prettier\ --stdin\ --parser\ typescript
 
 autocmd FileType scss nmap <buffer> <LEADER>b :Neoformat<CR>
 autocmd BufWritePre *.scss Neoformat
-autocmd FileType scss setlocal formatprg=prettier\ --stdin\ --parser\ css\ --single-quote
+autocmd FileType scss setlocal formatprg=prettier\ --stdin\ --parser\ css
 
 autocmd FileType yaml nmap <buffer> <LEADER>b :Neoformat<CR>
 autocmd BufWritePre *.yml Neoformat
 autocmd BufWritePre *.yaml Neoformat
-autocmd FileType yaml setlocal formatprg=prettier\ --stdin\ --parser\ yaml\ --single-quote
-autocmd FileType yaml setlocal shiftwidth=2 tabstop=2
+autocmd FileType yaml setlocal formatprg=prettier\ --stdin\ --parser\ yaml
 
 let g:neoformat_try_formatprg = 1
 
@@ -144,6 +146,7 @@ nnoremap <LEADER>, :noh<CR>
 nnoremap <LEADER>w :w<CR>
 " Toggle NERDTree panel
 nnoremap <LEADER>n :NERDTreeToggle<CR>
+let NERDTreeShowHidden=1
 
 " Beautify vue SFC files:
 " * Beautify ts for the <script></script> region
@@ -174,8 +177,11 @@ vnoremap <LEADER>p "_dP
 " Move around windows
 nnoremap <LEADER>h <C-w>h
 nnoremap <LEADER><Left> <C-w>h
+nnoremap <LEADER>j <C-w>j
 nnoremap <LEADER><Down> <C-w>j
+nnoremap <LEADER>k <C-w>k
 nnoremap <LEADER><Up> <C-w>k
+nnoremap <LEADER>l <C-w>l
 nnoremap <LEADER><Right> <C-w>l
 
 " If no file required at CLI invoke, open with NERDTree
@@ -191,10 +197,10 @@ nnoremap <F3> :tabn<CR>
 "noremap <r> <Plug>(expand_region_expand)
 
 " Indent setup
-set tabstop=4
+set tabstop=2
 set softtabstop=0
-set expandtab
-set shiftwidth=4
+set noexpandtab
+set shiftwidth=2
 set smarttab
 let delimitMate_expand_cr = 1
 
@@ -224,6 +230,11 @@ set undofile
 
 " Always display status line
 set laststatus=2
+" Display only the beginning of a branch
+function! CustomBranchName(name)
+    return fnamemodify(a:name, ':t')[0:7]
+endfunction
+let g:airline#extensions#branch#format = 'CustomBranchName'
 
 " Sane search
 nnoremap / /\v
@@ -268,13 +279,11 @@ set t_Co=256
 colorscheme inkpot
 
 " Display trailing spaces and other stuff
-set listchars=tab:>-,trail:~,extends:>,precedes:<,nbsp:⎵
+set listchars=tab:\ \ ,trail:~,extends:>,precedes:<,nbsp:⎵
 set list
 
 " Force learn ^^'
 noremap <F1> <nop>
-nnoremap j gj
-nnoremap k gk
 inoremap «» <ESC>
 inoremap »« <ESC>
 
