@@ -105,7 +105,7 @@ autocmd FileType * nmap <buffer> <LEADER>b ggVG=<CR>
 " Don't forget to install prettier globally (npm install -g prettier)
 autocmd FileType javascript nmap <buffer> <LEADER>b :Neoformat<CR>
 autocmd BufWritePre *.js Neoformat
-autocmd FileType javascript setlocal formatprg=prettier\ --stdin\ --parser\ typescript
+autocmd FileType javascript setlocal formatprg=prettier\ --stdin\ --parser\ babel
 
 autocmd FileType json nmap <buffer> <LEADER>b :Neoformat<CR>
 autocmd BufWritePre *.json Neoformat
@@ -119,10 +119,10 @@ autocmd FileType scss nmap <buffer> <LEADER>b :Neoformat<CR>
 autocmd BufWritePre *.scss Neoformat
 autocmd FileType scss setlocal formatprg=prettier\ --stdin\ --parser\ css
 
-autocmd FileType yaml nmap <buffer> <LEADER>b :Neoformat<CR>
+autocmd FileType yaml,yml nmap <buffer> <LEADER>b :Neoformat<CR>
 autocmd BufWritePre *.yml Neoformat
 autocmd BufWritePre *.yaml Neoformat
-autocmd FileType yaml setlocal formatprg=prettier\ --stdin\ --parser\ yaml
+autocmd FileType yaml,yml setlocal formatprg=prettier\ --stdin\ --parser\ yaml
 
 let g:neoformat_try_formatprg = 1
 
@@ -260,8 +260,8 @@ set colorcolumn=85
 set statusline+=%#warningmsg#
 set statusline+=%{SyntasticStatuslineFlag()}
 set statusline+=%*
-" You shouldn't use 'tsc' checker.
 let g:syntastic_mode_map = { "mode": "passive" }
+" You shouldn't use 'tsc' checker.
 let g:syntastic_typescript_checkers = ['tsuquyomi', 'tslint']
 let g:syntastic_typescript_tslint_args = "--project tslint.json"
 let g:syntastic_aggregate_errors = 1
@@ -270,6 +270,7 @@ let g:syntastic_auto_loc_list = 1
 let g:syntastic_check_on_open = 0
 let g:syntastic_check_on_wq = 0
 autocmd FileType typescript nmap <buffer> <LEADER>c :SyntasticCheck<CR>
+autocmd FileType javascript nmap <buffer> <LEADER>c :YcmDiags<CR>
 " Navigate through errors
 autocmd FileType typescript nmap <buffer> ! :lnext<CR>
 autocmd FileType typescript nmap <buffer> <LEADER>! :lprevious<CR>
