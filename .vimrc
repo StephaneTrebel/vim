@@ -80,9 +80,6 @@ Plugin 'scrooloose/syntastic'
 " RobotFramework syntax support
 Plugin 'mfukar/robotframework-vim'
 
-" Jenkinsfile syntax highlighting
-Plugin 'martinda/Jenkinsfile-vim-syntax'
-
 " Javascript syntax highlighting
 Plugin 'pangloss/vim-javascript'
 
