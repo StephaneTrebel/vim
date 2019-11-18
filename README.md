@@ -13,31 +13,39 @@ My .vim folder with every plugin I use and my own annotated .vimrc file
 - Use GNU stow to make all required symlink:
 
 ```bash
-# stow vim
+$ stow vim
+```
+
+*Note:* I encourage you to create a stow ignore file:
+```bash
+$ cat ~/.stow-global-ignore
+\.git
+\.gitignore
+\.gitmodules
+^/README.*
 ```
 
 - Install Vundle:
-
 ```javascript
-cd <DOTFILES_DIRECTORY>/vim && git submodule init && git submodule update
+$ cd <DOTFILES_DIRECTORY>/vim && git submodule init && git submodule update
 ```
 
 - Launch `vim`, pass the error messages with `Enter` and type `:PluginInstall` and `Enter`.
 - When finished, exit and compile [YouCompleteMe](https://github.com/Valloric/YouCompleteMe):
 
 ```bash
-# Warning: this will only give you javascript support, for other options go to the YouCompleteMe repo for explanations
+# Warning: this will only give you javascript/typescript support, for other options go to the YouCompleteMe repo for explanations
 
 # Install C dependencies
-sudo apt-get install build-essential cmake
+$ sudo apt-get install build-essential cmake
 
 # Install Python dependencies
-sudo apt-get install python-dev python3-dev
+$ sudo apt-get install python-dev python3-dev
 
-cd ~/.vim/bundle/YouCompleteMe
+$ cd ~/.vim/bundle/YouCompleteMe
 
 # Install with javascript support
-./install.py --tern-completer
+$ python3 ./install.py
 ```
 
 - Compile vimproc (go to [the Vimproc repo](https://github.com/Shougo/vimproc.vim) and follow the "Manual" installation steps)
@@ -60,5 +68,5 @@ powerful albeit challenging text editor.
 Special mentions:
 
 - http://learnvimscriptthehardway.stevelosh.com/
-- GNU stow
+- [Using GNU Stow to manage your dotfiles](http://brandon.invergo.net/news/2012-05-26-using-gnu-stow-to-manage-your-dotfiles.html)
 - http://brandon.invergo.net/news/2012-05-26-using-gnu-stow-to-manage-your-dotfiles.html
