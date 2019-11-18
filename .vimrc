@@ -9,6 +9,9 @@ Plugin 'VundleVim/Vundle.vim'
 " Git Integration
 Plugin 'tpope/vim-fugitive'
 
+" Vim Session handling
+Plugin 'tpope/vim-obsession'
+
 " NERDTree
 Plugin 'scrooloose/nerdtree'
 Plugin 'Xuyuanp/nerdtree-git-plugin'
