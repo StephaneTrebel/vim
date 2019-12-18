@@ -106,11 +106,11 @@ autocmd FileType * nmap <buffer> <LEADER>b ggVG=<CR>
 
 " Don't forget to install prettier globally (npm install -g prettier)
 autocmd FileType javascript nmap <buffer> <LEADER>b :Neoformat<CR>
-autocmd BufWritePre *.js Neoformat
+" autocmd BufWritePre *.js Neoformat
 autocmd FileType javascript setlocal formatprg=prettier\ --stdin\ --parser\ babel
 
 autocmd FileType json nmap <buffer> <LEADER>b :Neoformat<CR>
-autocmd BufWritePre *.json Neoformat
+" autocmd BufWritePre *.json Neoformat
 autocmd FileType json setlocal formatprg=prettier\ --stdin\ --parser\ json
 
 autocmd FileType typescript nmap <buffer> <LEADER>b :Neoformat<CR>
@@ -118,12 +118,12 @@ autocmd FileType typescript nmap <buffer> <LEADER>b :Neoformat<CR>
 autocmd FileType typescript setlocal formatprg=prettier\ --stdin\ --parser\ typescript
 
 autocmd FileType scss nmap <buffer> <LEADER>b :Neoformat<CR>
-autocmd BufWritePre *.scss Neoformat
+" autocmd BufWritePre *.scss Neoformat
 autocmd FileType scss setlocal formatprg=prettier\ --stdin\ --parser\ css
 
 autocmd FileType yaml,yml nmap <buffer> <LEADER>b :Neoformat<CR>
-autocmd BufWritePre *.yml Neoformat
-autocmd BufWritePre *.yaml Neoformat
+" autocmd BufWritePre *.yml Neoformat
+" autocmd BufWritePre *.yaml Neoformat
 autocmd FileType yaml,yml setlocal formatprg=prettier\ --stdin\ --parser\ yaml
 
 let g:neoformat_try_formatprg = 1
@@ -163,7 +163,7 @@ function! BeautifyVue()
     noh
 endfunction
 autocmd FileType vue nnoremap <LEADER>b :call BeautifyVue()<CR>
-autocmd BufWritePre *.vue call BeautifyVue()
+" autocmd BufWritePre *.vue call BeautifyVue()
 
 " Edit vimrc in a vertical split
 nnoremap <leader>ev :vsplit ~/.vimrc<CR>
