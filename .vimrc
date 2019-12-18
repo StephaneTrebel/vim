@@ -335,6 +335,6 @@ let g:NERDSpaceDelims = 1
 set switchbuf+=newtab
 
 " Toggle paste mode. Useful when pasting in Windows environnements
-set pastetoggle=<F2>
+set pastetoggle=<F4>
 
 syntax enable
