@@ -23,6 +23,7 @@ $ cat ~/.stow-global-ignore
 \.gitignore
 \.gitmodules
 ^/README.*
+^/LICENCE*
 ```
 
 - Install Vundle:
@@ -69,4 +70,3 @@ Special mentions:
 
 - http://learnvimscriptthehardway.stevelosh.com/
 - [Using GNU Stow to manage your dotfiles](http://brandon.invergo.net/news/2012-05-26-using-gnu-stow-to-manage-your-dotfiles.html)
-- http://brandon.invergo.net/news/2012-05-26-using-gnu-stow-to-manage-your-dotfiles.html
