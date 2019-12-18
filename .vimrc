@@ -97,6 +97,8 @@ au BufNewFile,BufFilePre,BufRead *.tag set filetype=jsp
 au BufNewFile,BufFilePre,BufRead *.dockerfile set filetype=dockerfile
 
 
+au BufNewFile,BufFilePre,BufRead *.bashrc set filetype=sh
+
 " Formatter conf
 
 " Default formatting = vim native indentation
