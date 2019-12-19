@@ -313,6 +313,8 @@ set autoread
 " anyway.
 " But for this to work you might need vim-gtk or vim-gnome installed
 " (see http://vim.wikia.com/wiki/Accessing_the_system_clipboard for more info)
+" Windows WSL user should look into this link for cross-clipboard handling:
+" https://github.com/Microsoft/WSL/issues/892#issuecomment-275873108
 set clipboard=unnamedplus
 
 " Easymotion configuration
