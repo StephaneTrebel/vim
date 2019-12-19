@@ -8,22 +8,12 @@ My .vim folder with every plugin I use and my own annotated .vimrc file
 - vim-gtk/vim-gnome (Optional, for system clipboard sync support)
 
 # Installation
-- Create a dotfiles or .dotfiles directory if you haven't already
+- In your home folder, create a `dotfiles` or `.dotfiles` directory if you haven't created it already
 - Clone this repo in your dotfiles directory
 - Use GNU stow to make all required symlink:
 
 ```bash
-$ stow vim
-```
-
-*Note:* I encourage you to create a stow ignore file:
-```bash
-$ cat ~/.stow-global-ignore
-\.git
-\.gitignore
-\.gitmodules
-^/README.*
-^/LICENCE*
+~/dotfiles$ stow vim
 ```
 
 - Install Vundle:
@@ -63,8 +53,8 @@ $ python3 ./install.py
 
 # Credits
 
-All the vim community that helped a late vimer like me to take one the most
-powerful albeit challenging text editor.
+All the vim community that helped a late vimer like me take over one of the most
+powerful — albeit challenging — text editor.
 
 Special mentions:
 
