@@ -1,7 +1,6 @@
 *~*
-.vim/bundle/
+.vim/bundle
 !.vim/bundle/Vundle.vim/
-.vim/undo/%*
-.vim/swap/%*
-.vim/swap/*.swp
-.vim/backup/%*
+.vim/undo
+.vim/swap
+.vim/backup
