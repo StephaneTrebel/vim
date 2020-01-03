@@ -25,7 +25,6 @@ Plugin 'Valloric/YouCompleteMe'
 
 " Indent guide
 Plugin 'nathanaelkane/vim-indent-guides'
-Plugin 'Raimondi/delimitMate'
 
 " Region Expansion
 Plugin 'terryma/vim-expand-region'
