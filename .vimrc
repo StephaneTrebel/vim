@@ -315,7 +315,14 @@ let g:ycm_always_populate_location_list=0
 let g:editorconfig_Beautifier = "~/.vim/.editorconfig"
 
 " Automatically refresh buffer on external changes
+" For the CursorHold see
+" [here](https://superuser.com/a/1090762)
 set autoread
+au CursorHold * checktime
+
+" Wait x milliseconds of inactivity to write the current buffer into a swap
+" file, and to trigger CursorHold a event.
+set updatetime=2000
 
 " Default the unnamed (default) register to the '+' one which is the default
 " X one. Other systems (Windows for sure) should not care if it's '+' or '*'
