@@ -86,6 +86,10 @@ Plugin 'mfukar/robotframework-vim'
 Plugin 'pangloss/vim-javascript'
 Plugin 'othree/jsdoc-syntax.vim'
 
+" PlantUML support
+Plugin 'aklt/plantuml-syntax'
+let g:plantuml_set_makeprg = 0
+
 
 call vundle#end()
 filetype plugin indent on
