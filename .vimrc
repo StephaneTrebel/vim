@@ -84,6 +84,8 @@ Plugin 'mfukar/robotframework-vim'
 
 " Javascript syntax highlighting
 Plugin 'pangloss/vim-javascript'
+Plugin 'othree/jsdoc-syntax.vim'
+
 
 call vundle#end()
 filetype plugin indent on
