@@ -355,4 +355,9 @@ set switchbuf+=newtab
 " Toggle paste mode. Useful when pasting in Windows environnements
 set pastetoggle=<F4>
 
+" Better autochdir: Automatically change the local pwd of a Buffer when loading
+" a file
+autocmd BufEnter * silent! lcd %:p:h
+
 syntax enable
+
