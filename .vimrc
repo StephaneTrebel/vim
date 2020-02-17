@@ -90,6 +90,10 @@ Plugin 'othree/jsdoc-syntax.vim'
 Plugin 'aklt/plantuml-syntax'
 let g:plantuml_set_makeprg = 0
 
+" Notes plugin
+Plugin 'xolox/vim-notes'
+Plugin 'xolox/vim-misc'
+let g:notes_directories = ['~/Notes']
 
 call vundle#end()
 filetype plugin indent on
