@@ -95,11 +95,20 @@ Plugin 'xolox/vim-notes'
 Plugin 'xolox/vim-misc'
 let g:notes_directories = ['~/Notes']
 
+" Markdown support
+Plugin 'tpope/vim-markdown'
+
+" Vimdeck support (see https://github.com/tybenz/vimdeck)
+Plugin 'vim-scripts/SyntaxRange'
+
 call vundle#end()
 filetype plugin indent on
-"
+
+" Markdown support
 " Treat *.md files as markdown syntax (default is modula2)
-au BufNewFile,BufFilePre,BufRead *.md set filetype=markdown
+" au BufNewFile,BufFilePre,BufRead *.md set filetype=markdown
+let g:markdown_fenced_languages = ['html', 'javascript', 'bash=sh']
+
 " Treat *.tag files as jsp syntax (default is mason)
 au BufNewFile,BufFilePre,BufRead *.tag set filetype=jsp
 " Treat *.dockerfile files as dockerfile syntax
@@ -358,6 +367,28 @@ set pastetoggle=<F4>
 " Better autochdir: Automatically change the local pwd of a Buffer when loading
 " a file
 autocmd BufEnter * silent! lcd %:p:h
+
+" Hide all statusline (Useful for Vimdeck presentations)
+let s:hidden_all = 0
+function! ToggleHiddenAll()
+    if s:hidden_all  == 0
+        let s:hidden_all = 1
+        set noshowmode
+        set noruler
+        set laststatus=0
+        set noshowcmd
+		set shortmess+=F
+    else
+        let s:hidden_all = 0
+        set showmode
+        set ruler
+        set laststatus=2
+        set showcmd
+		set shortmess-=F
+    endif
+endfunction
+
+nnoremap <S-h> :call ToggleHiddenAll()<CR>
 
 syntax enable
 
