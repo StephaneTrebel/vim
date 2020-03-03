@@ -128,24 +128,28 @@ autocmd FileType * nmap <buffer> <LEADER>b ggVG=<CR>
 " Don't forget to install prettier globally (npm install -g prettier)
 autocmd FileType javascript nmap <buffer> <LEADER>b :Neoformat<CR>
 " autocmd BufWritePre *.js Neoformat
-autocmd FileType javascript setlocal formatprg=prettier\ --stdin\ --parser\ babel
+autocmd FileType javascript setlocal formatprg=prettier\ --stdin\ --parser\ babel\ --end-of-line\ lf
 
 autocmd FileType json nmap <buffer> <LEADER>b :Neoformat<CR>
 " autocmd BufWritePre *.json Neoformat
-autocmd FileType json setlocal formatprg=prettier\ --stdin\ --parser\ json
+autocmd FileType json setlocal formatprg=prettier\ --stdin\ --parser\ json\ --end-of-line\ lf
+
 
 autocmd FileType typescript nmap <buffer> <LEADER>b :Neoformat<CR>
 " autocmd BufWritePre *.ts Neoformat " Disabled because I find it cumbersome
-autocmd FileType typescript setlocal formatprg=prettier\ --stdin\ --parser\ typescript
+autocmd FileType typescript setlocal formatprg=prettier\ --stdin\ --parser\ typescript\ --end-of-line\ lf
+
 
 autocmd FileType scss nmap <buffer> <LEADER>b :Neoformat<CR>
 " autocmd BufWritePre *.scss Neoformat
-autocmd FileType scss setlocal formatprg=prettier\ --stdin\ --parser\ css
+autocmd FileType scss setlocal formatprg=prettier\ --stdin\ --parser\ css\ --end-of-line\ lf
+
 
 autocmd FileType yaml,yml nmap <buffer> <LEADER>b :Neoformat<CR>
 " autocmd BufWritePre *.yml Neoformat
 " autocmd BufWritePre *.yaml Neoformat
-autocmd FileType yaml,yml setlocal formatprg=prettier\ --stdin\ --parser\ yaml
+autocmd FileType yaml,yml setlocal formatprg=prettier\ --stdin\ --parser\ yaml\ --end-of-line\ lf
+
 
 let g:neoformat_try_formatprg = 1
 
