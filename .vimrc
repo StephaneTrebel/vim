@@ -101,6 +101,9 @@ Plugin 'tpope/vim-markdown'
 " Vimdeck support (see https://github.com/tybenz/vimdeck)
 Plugin 'vim-scripts/SyntaxRange'
 
+" Better swap file handling
+Plugin 'gioele/vim-autoswap'
+
 call vundle#end()
 filetype plugin indent on
 
@@ -315,6 +318,12 @@ set directory=~/.vim/swap
 set undodir=~/.vim/undo
 set writebackup
 set backupcopy=yes
+" Ensure title and titlestring variables are set to default for autoswap
+set title titlestring=
+" Activate autoswap tmux feature so that opening an already open file will
+" automatically switch to the already opened vim instance in the relevant
+" tmux window/panel
+let g:autoswap_detect_tmux = 1
 
 " YouCompleteMe Fix
 let g:ycm_server_python_interpreter="/usr/bin/python3"
