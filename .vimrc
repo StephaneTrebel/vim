@@ -107,6 +107,11 @@ Plugin 'gioele/vim-autoswap'
 call vundle#end()
 filetype plugin indent on
 
+" Jenkinsfile support
+" If you have Jenkinsfile support but also have to handle «*.jenkinsfile»
+" files, this line is for you
+au BufNewFile,BufFilePre,BufRead *.jenkinsfile set filetype=Jenkinsfile
+
 " Markdown support
 " Treat *.md files as markdown syntax (default is modula2)
 " au BufNewFile,BufFilePre,BufRead *.md set filetype=markdown
