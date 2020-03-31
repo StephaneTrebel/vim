@@ -359,7 +359,20 @@ set updatetime=2000
 " (see http://vim.wikia.com/wiki/Accessing_the_system_clipboard for more info)
 " Windows WSL user should look into this link for cross-clipboard handling:
 " https://github.com/Microsoft/WSL/issues/892#issuecomment-275873108
-set clipboard=unnamedplus
+set clipboard^=unnamedplus
+" Prevent clipboard clearing on exit or suspend (Ctrl-Z)
+if executable("xsel")
+  function! PreserveClipboard()
+    call system("xsel -ib", getreg('+'))
+  endfunction
+  function! PreserveClipboadAndSuspend()
+    call PreserveClipboard()
+    suspend
+  endfunction
+  autocmd VimLeave * call PreserveClipboard()
+  nnoremap <silent> <c-z> :call PreserveClipboadAndSuspend()<cr>
+  vnoremap <silent> <c-z> :<c-u>call PreserveClipboadAndSuspend()<cr>
+endif
 
 " Easymotion configuration
 let g:EasyMotion_do_mapping = 0 " Disable default mappings
