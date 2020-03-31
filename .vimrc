@@ -99,7 +99,8 @@ let g:notes_directories = ['~/Notes']
 Plugin 'tpope/vim-markdown'
 
 " Vimdeck support (see https://github.com/tybenz/vimdeck)
-Plugin 'vim-scripts/SyntaxRange'
+Plugin 'inkarkat/vim-SyntaxRange'
+Plugin 'inkarkat/vim-ingo-library'
 
 " Better swap file handling
 Plugin 'gioele/vim-autoswap'
