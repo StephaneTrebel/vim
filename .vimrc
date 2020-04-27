@@ -165,7 +165,6 @@ let g:neoformat_try_formatprg = 1
 " display anyway
 autocmd FileType markdown setlocal tw=0
 
-
 " Security concerns and useless anyway
 set modelines=0
 
@@ -182,6 +181,12 @@ nnoremap <LEADER>w :w<CR>
 " Toggle NERDTree panel
 nnoremap <LEADER>n :NERDTreeToggle<CR>
 let NERDTreeShowHidden=1
+" If no file required at CLI invoke, open with NERDTree (no buffer will be
+" opened)
+autocmd VimEnter * if argc() == 0 && !exists("s:std_in") | NERDTreeToggle | wincmd w | q | endif
+let NERDTreeShowLineNumbers=1
+let NERDTreeMinimalUI=1
+
 
 " Beautify vue SFC files:
 " * Beautify ts for the <script></script> region
@@ -218,11 +223,6 @@ nnoremap <LEADER>k <C-w>k
 nnoremap <LEADER><Up> <C-w>k
 nnoremap <LEADER>l <C-w>l
 nnoremap <LEADER><Right> <C-w>l
-
-" If no file required at CLI invoke, open with NERDTree
-autocmd VimEnter * if argc() == 0 && !exists("s:std_in") | NERDTree | endif
-let NERDTreeShowLineNumbers=1
-let NERDTreeMinimalUI=1
 
 " Tab movement
 nnoremap <F2> :tabp<CR>
