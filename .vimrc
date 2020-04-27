@@ -89,6 +89,8 @@ Plugin 'othree/jsdoc-syntax.vim'
 " PlantUML support
 Plugin 'aklt/plantuml-syntax'
 let g:plantuml_set_makeprg = 0
+" Compile to SVG with F5 and return immediately to vim
+autocmd FileType plantuml nmap <buffer> <F5> :silent !plantuml -tsvg %<CR>:redraw!<CR>
 
 " Notes plugin
 Plugin 'xolox/vim-notes'
