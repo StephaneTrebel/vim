@@ -424,5 +424,8 @@ endfunction
 
 nnoremap <S-h> :call ToggleHiddenAll()<CR>
 
+" Enable spell checking with default english dictionnary
+autocmd FileType markdown setlocal spell spelllang=en_us
+
 syntax enable
 
