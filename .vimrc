@@ -45,15 +45,16 @@ Plugin 'mustache/vim-mustache-handlebars'
 Plugin 'Quramy/tsuquyomi'
 let g:tsuquyomi_completion_detail = 1
 Plugin 'leafgarland/typescript-vim'
+Plugin 'peitalin/vim-jsx-typescript'
 let g:tsuquyomi_disable_quickfix = 1
-autocmd FileType typescript nmap <buffer> <LEADER>d :TsuDefinition<CR>
-autocmd FileType typescript nmap <buffer> <LEADER>f :TsuReferences<CR>
-autocmd FileType typescript nmap <buffer> <LEADER>g :TsuGoBack<CR>
-autocmd FileType typescript nmap <buffer> <LEADER>i :TsuImport<CR>
-autocmd FileType typescript nmap <buffer> <LEADER>r :TsuRenameSymbol<CR>
-autocmd FileType typescript nmap <buffer> <LEADER>t : <C-u>echo tsuquyomi#hint()<CR>
-autocmd FileType typescript nmap <buffer> <LEADER>x :TsuQuickFix<CR>
-autocmd FileType typescript setlocal completeopt-=preview
+autocmd FileType typescript* nmap <buffer> <LEADER>d :TsuDefinition<CR>
+autocmd FileType typescript* nmap <buffer> <LEADER>f :TsuReferences<CR>
+autocmd FileType typescript* nmap <buffer> <LEADER>g :TsuGoBack<CR>
+autocmd FileType typescript* nmap <buffer> <LEADER>i :TsuImport<CR>
+autocmd FileType typescript* nmap <buffer> <LEADER>r :TsuRenameSymbol<CR>
+autocmd FileType typescript* nmap <buffer> <LEADER>t : <C-u>echo tsuquyomi#hint()<CR>
+autocmd FileType typescript* nmap <buffer> <LEADER>x :TsuQuickFix<CR>
+autocmd FileType typescript* setlocal completeopt-=preview
 
 " Ack support
 " Beware ! git.fsck might not like this plugin. Use manual install if needed:
@@ -107,6 +108,9 @@ Plugin 'inkarkat/vim-ingo-library'
 " Better swap file handling
 Plugin 'gioele/vim-autoswap'
 
+" Hashicorp Terraform syntax support
+Plugin 'hashivim/vim-terraform'
+
 call vundle#end()
 filetype plugin indent on
 
@@ -127,6 +131,7 @@ au BufNewFile,BufFilePre,BufRead *.dockerfile set filetype=dockerfile
 
 
 au BufNewFile,BufFilePre,BufRead *.bashrc set filetype=sh
+au BufNewFile,BufFilePre,BufRead *.env.local set filetype=sh
 
 " Formatter conf
 
@@ -143,9 +148,9 @@ autocmd FileType json nmap <buffer> <LEADER>b :Neoformat<CR>
 autocmd FileType json setlocal formatprg=prettier\ --stdin\ --parser\ json\ --end-of-line\ lf
 
 
-autocmd FileType typescript nmap <buffer> <LEADER>b :Neoformat<CR>
+autocmd FileType typescript* nmap <buffer> <LEADER>b :Neoformat<CR>
 " autocmd BufWritePre *.ts Neoformat " Disabled because I find it cumbersome
-autocmd FileType typescript setlocal formatprg=prettier\ --stdin\ --parser\ typescript\ --end-of-line\ lf
+autocmd FileType typescript* setlocal formatprg=prettier\ --stdin\ --parser\ typescript\ --end-of-line\ lf
 
 
 autocmd FileType scss nmap <buffer> <LEADER>b :Neoformat<CR>
@@ -158,6 +163,7 @@ autocmd FileType yaml,yml nmap <buffer> <LEADER>b :Neoformat<CR>
 " autocmd BufWritePre *.yaml Neoformat
 autocmd FileType yaml,yml setlocal formatprg=prettier\ --stdin\ --parser\ yaml\ --end-of-line\ lf
 
+autocmd FileType terraform nmap <buffer> <LEADER>b :TerraformFmt<CR>
 
 let g:neoformat_try_formatprg = 1
 
@@ -267,7 +273,7 @@ set undofile
 set laststatus=2
 " Display only the beginning of a branch
 function! CustomBranchName(name)
-    return fnamemodify(a:name, ':t')[0:7]
+    return fnamemodify(a:name, ':t')[0:10]
 endfunction
 let g:airline#extensions#branch#format = 'CustomBranchName'
 
@@ -427,7 +433,7 @@ endfunction
 nnoremap <S-h> :call ToggleHiddenAll()<CR>
 
 " Enable spell checking with default english dictionnary
-autocmd FileType markdown setlocal spell spelllang=en_us
+autocmd FileType markdown setlocal spell spelllang=fr
 
 syntax enable
 
