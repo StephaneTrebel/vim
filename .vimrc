@@ -404,12 +404,6 @@ set switchbuf+=newtab
 " Toggle paste mode. Useful when pasting in Windows environnements
 set pastetoggle=<F4>
 
-" Better autochdir: Automatically change the local pwd of a Buffer on file load.
-" Except markdown files, though, because vimdeck does not play nicely with
-" chdir commands like this :3
-let blacklist = ['markdown']
-autocmd BufEnter * if index(blacklist, &ft) < 0 | silent! lcd %:p:h
-
 " Hide all statusline (Useful for Vimdeck presentations)
 let s:hidden_all = 0
 function! ToggleHiddenAll()
@@ -433,7 +427,7 @@ endfunction
 nnoremap <S-h> :call ToggleHiddenAll()<CR>
 
 " Enable spell checking with default english dictionnary
-autocmd FileType markdown setlocal spell spelllang=fr
+autocmd FileType markdown setlocal spell spelllang=en
 
 syntax enable
 

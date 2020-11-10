@@ -79,3 +79,5 @@ Prérequis
 Terraform
 backend
 tf
+json
+semver
