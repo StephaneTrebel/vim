@@ -8,6 +8,7 @@ Plugin 'VundleVim/Vundle.vim'
 
 " Git Integration
 Plugin 'tpope/vim-fugitive'
+Plugin 'tommcdo/vim-fubitive'
 
 " Vim Session handling
 Plugin 'tpope/vim-obsession'
@@ -44,6 +45,7 @@ Plugin 'mustache/vim-mustache-handlebars'
 " Typescript support
 Plugin 'Quramy/tsuquyomi'
 let g:tsuquyomi_completion_detail = 1
+let g:tsuquyomi_definition_split = 3
 Plugin 'leafgarland/typescript-vim'
 Plugin 'peitalin/vim-jsx-typescript'
 let g:tsuquyomi_disable_quickfix = 1
@@ -98,9 +100,6 @@ Plugin 'xolox/vim-notes'
 Plugin 'xolox/vim-misc'
 let g:notes_directories = ['~/Notes']
 
-" Markdown support
-Plugin 'tpope/vim-markdown'
-
 " Vimdeck support (see https://github.com/tybenz/vimdeck)
 Plugin 'inkarkat/vim-SyntaxRange'
 Plugin 'inkarkat/vim-ingo-library'
@@ -113,6 +112,9 @@ Plugin 'hashivim/vim-terraform'
 
 call vundle#end()
 filetype plugin indent on
+
+" Activate FZF
+set rtp+=~/.fzf
 
 " Jenkinsfile support
 " If you have Jenkinsfile support but also have to handle «*.jenkinsfile»
@@ -273,7 +275,7 @@ set undofile
 set laststatus=2
 " Display only the beginning of a branch
 function! CustomBranchName(name)
-    return fnamemodify(a:name, ':t')[0:10]
+    return fnamemodify(a:name, ':t')[0:11]
 endfunction
 let g:airline#extensions#branch#format = 'CustomBranchName'
 

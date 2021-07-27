@@ -23,6 +23,8 @@ init-vundle:
 dependencies:
 	sudo apt update
 	sudo apt install \
+		# Clipboard sharing
+		xsel \
 		# Build utilities for third-party dependencies
 	  build-essential cmake python-dev python3-dev \
 		# Ack is used by vim-ack
